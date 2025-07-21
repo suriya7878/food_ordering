@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Online – A2B RESTAURANT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="order.html" class="active">Order Online</a>
+        <a href="booking.html">Bookings</a> <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <h1>Order Online — <span style="color:#246cac;">Tamil Nadu Specials</span></h1>
+        <div class="menu-list" id="menuList"></div>
+        <div class="order-section">
+            <h2>Your Order</h2>
+            <div id="orderSummary"></div>
+            <button id="placeOrderBtn">Place Order</button>
+        </div>
+    </div>
+
+    <script>
+        const menu = [
+            { name: "Idli Sambar", price: 50, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjsxtLVQbBtL72NgiIEGRNWtfR1oKNCUFVMg&s?fit=around|771.75:416.25&crop=771.75:416.25;*,*" },
+            { name: "Dosa", price: 60, img: "https://www.cookwithmanali.com/wp-content/uploads/2020/05/Masala-Dosa.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*" },
+            { name: "Pongal", price: 65, img: "https://www.shutterstock.com/shutterstock/videos/1100822751/thumb/1.jpg?ip=x480" },
+            { name: "Sambar Rice", price: 90, img: "https://t3.ftcdn.net/jpg/04/97/27/32/360_F_497273218_F31n8FKrDgrhCr3h3ya6B9EdPixkVRvu.jpg" },
+            { name: "Curd Rice", price: 60, img: "https://www.shutterstock.com/image-photo/vegetarian-meal-tasty-curd-rice-260nw-758530852.jpg" },
+            { name: "Chicken Rice", price: 85, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAI8wFwSLy0820uY5st6BxdFiW4VLOAX-UbQ&s" },
+            { name: "Chicken Chettinad", price: 210, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-buyOBkodK4RG9MDvAPdYyszhF3jO53n03Q&s" },
+            { name: "Kothu Parotta", price: 120, img: "https://t3.ftcdn.net/jpg/03/14/23/94/360_F_314239408_X499b1R4rEZfFxkfTrlvzwKbCdr1656T.jpg" },
+            { name: "Chicken 65 ", price: 50, img: "https://theflavoursofkitchen.com/wp-content/uploads/2021/08/Chicken-65-3-scaled.jpg" },
+            { name: "Grill Chicken", price: 350, img: "https://media.istockphoto.com/id/502474519/photo/homemade-grilled-barbecue-chicken.jpg?s=612x612&w=0&k=20&c=5wm-TATH7AH8n77VLfl3CY_CCGeP94TjqrsgB1rXpOg=" },
+            { name: "Shawarma", price: 70, img: "https://png.pngtree.com/thumb_back/fh260/background/20240614/pngtree-delicious-shawarma-served-on-wooden-board-table-in-cafe-grilled-pita-image_15872331.jpg" },
+            { name: "Mutton kari dosa", price: 120, img: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWw-m2qkMGTUwLw6Ue2JqtGGgTWDK5vrzwTe8AcWMydw7sr2AJecTjNZlhMZ_iM6qiyEpGT-PX-aidXg-8I9wqBFXyeyYuw5Woit81Z2IMwzvkMBHy0Pqro4T4juj8qI1pfvYAkaU_K5A/s3264/IMG-9297.jpg" },
+            { name: "Vazha illai parotta", price: 110, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwV1wHd81Py-_p8S1BLL2CsZW5Fbxbdf4wRA&s" },
+            { name: "Chicken Biriyani", price: 100, img: "https://b.zmtcdn.com/data/pictures/1/18275021/2ad378c6c6f7df56298ad74dce1995ac_featured_v2.jpg" },
+            { name: "Mutton Chukka", price: 240, img: "https://i1.wp.com/www.freshtohome.com/blog/wp-content/uploads/2024/06/Screenshot-2024-06-27-130844.png?fit=932%2C620&ssl=1" },
+            { name: "Mutton Biriyani", price: 150, img: "https://t4.ftcdn.net/jpg/05/17/96/89/360_F_517968988_hFHjQT6Flfksjx8n0KxfvMtP2tqlmGKk.jpg" },
+            { name: "Ice Cream(All Flavours)", price: 50, img: "https://www.shutterstock.com/image-photo/gourmet-summer-dessert-artisanal-craft-600nw-1647372625.jpg" },
+            { name: "Sweet Beeda", price: 20, img: "https://indianmagicpro.com/wp-content/uploads/2025/03/Sweet-pan-beeda-stall-for-events-430x430.png" }
+        ];
+        let order = {};
+
+        function renderMenu() {
+            let html = "";
+            menu.forEach((item, i) => {
+                html += `
+                <div class="menu-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="food-title">${item.name}</div>
+                    <div class="food-price">₹${item.price}</div>
+                    <div class="quantity-controls">
+                        <button onclick="changeQty(${i}, -1)">-</button>
+                        <span id="qty-${i}">${order[i]||0}</span>
+                        <button onclick="changeQty(${i}, 1)">+</button>
+                    </div>
+                </div>
+                `;
+            });
+            document.getElementById("menuList").innerHTML = html;
+        }
+
+        function renderOrderSummary() {
+            let html = "";
+            const orderItems = Object.entries(order).filter(([i, qty]) => qty > 0);
+            if (orderItems.length === 0) {
+                html = "<p style='text-align:center;'>No items selected.</p>";
+            } else {
+                html = "<table><tr><th>Item</th><th>Qty</th><th>Rate</th><th>Amt</th></tr>";
+                let total = 0;
+                orderItems.forEach(([i, qty]) => {
+                    const item = menu[i];
+                    const amt = qty * item.price;
+                    total += amt;
+                    html += `<tr>
+                        <td>${item.name}</td>
+                        <td style="text-align:center;">${qty}</td>
+                        <td>₹${item.price}</td>
+                        <td>₹${amt}</td>
+                    </tr>`;
+                });
+                html += `</table><div class='total'>Total: ₹${total}</div>`;
+            }
+            document.getElementById("orderSummary").innerHTML = html;
+        }
+
+        function changeQty(idx, delta) {
+            if (!order[idx]) order[idx] = 0;
+            order[idx] = Math.max(0, order[idx] + delta);
+            document.getElementById('qty-' + idx).textContent = order[idx];
+            renderOrderSummary();
+        }
+
+        document.getElementById("placeOrderBtn").onclick = function() {
+            const orderItems = Object.entries(order).filter(([i, qty]) => qty > 0);
+            if (orderItems.length < 1) {
+                alert('Please add at least one item.');
+                return;
+            }
+            let summary = "Thank you for your order!\n\n";
+            let total = 0;
+            orderItems.forEach(([i, qty]) => {
+                const item = menu[i];
+                const amt = qty * item.price;
+                total += amt;
+                summary += `${item.name} x ${qty} = ₹${amt}\n`;
+            });
+            summary += `\nTotal: ₹${total}\n\nYour order has been placed!`;
+            alert(summary);
+            // Reset order
+            order = {};
+            renderMenu();
+            renderOrderSummary();
+        };
+
+        renderMenu();
+        renderOrderSummary();
+    </script>
+</body>
+</html>

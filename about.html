@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us – A2B RESTAURANT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* General Body and Container Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eaf6fb;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 32px auto;
+            background: #f6fbfe;
+            padding: 32px 24px 36px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation Bar Styles */
+        .nav {
+            background: #4a90e2;
+            padding: 0.8em 1.6em;
+            display: flex;
+            gap: 35px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #eaf6fb;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-size: 1.15rem;
+            padding: 0.5em 0.8em;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease-out;
+        }
+
+        .nav a.active,
+        .nav a:hover {
+            background: rgba(7, 52, 82, 0.2);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        /* Headings and Paragraphs */
+        h1 {
+            color: #246cac;
+            margin-bottom: 0.3em;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            color: #357ab7;
+            margin-bottom: 1em;
+            margin-top: 1.8em;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .desc {
+            font-size: 1.1em;
+            color: #22547a;
+            margin-bottom: 2em;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Page */
+        .about-img {
+            float: right;
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-left: 25px;
+            box-shadow: 0 10px 25px rgba(36, 108, 172, 0.25);
+            object-fit: cover;
+        }
+
+        .about-desc {
+            font-size: 1.15rem;
+            color: #22547a;
+            line-height: 1.8;
+        }
+
+        /* Media Queries */
+        @media(max-width:700px){
+            .container{padding:15px;}
+            .about-img{float:none;display:block;margin:18px auto 15px auto;}
+            .nav {
+                flex-direction: column;
+                padding: 0.5em 1em;
+                gap: 15px;
+            }
+            .nav a {
+                text-align: center;
+                font-size: 1rem;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            .desc { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="order.html">Order Online</a>
+        <a href="booking.html">Bookings</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <h1>About A2B RESTAURANT</h1>
+        <img src="https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg" alt="Delicious Food at A2B RESTAURANT" class="about-img"/>
+        <div class="about-desc">
+            <p>
+                <strong>A2B RESTAURANT</strong> is dedicated to serving the best of Tamil Nadu's rich and diverse cuisine—from tiffin classics like idli, dosa, and pongal, to flavourful gravies, authentic Chettinad, and beloved sweets.
+                <br><br>
+                Since 1995, we’ve celebrated the culinary traditions of Tamil Nadu, delighting diners of all ages! Our chefs use traditional recipes and the freshest local ingredients to bring you an authentic taste of South India.
+                <br><br>
+                We believe that food is more than just sustenance; it's a celebration of culture, family, and community. Every dish at A2B RESTAURANT is prepared with passion and served with warmth, ensuring a memorable dining experience.
+                <br><br>
+                We invite you to visit, taste tradition, and celebrate every meal as a festival.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

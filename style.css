@@ -1,0 +1,169 @@
+/* General Body and Container Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Changed font to Inter */
+    background: #eaf6fb;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 32px auto;
+    background: #f6fbfe;
+    padding: 32px 24px 36px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Stronger, softer shadow */
+}
+
+/* Navigation Bar Styles */
+.nav {
+    background: #4a90e2;
+    padding: 0.8em 1.6em; /* Slightly more padding */
+    display: flex;
+    gap: 35px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    justify-content: center; /* Center nav items */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.nav a {
+    color: #eaf6fb;
+    text-decoration: none;
+    font-weight: 600; /* Slightly bolder */
+    letter-spacing: 0.5px; /* Subtle letter spacing */
+    font-size: 1.15rem; /* Slightly larger font */
+    padding: 0.5em 0.8em; /* Padding for click area */
+    border-radius: 8px; /* Rounded corners for nav links */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease-out; /* Smooth transitions */
+}
+
+.nav a.active,
+.nav a:hover {
+    background: rgba(7, 52, 82, 0.2); /* Subtle background on hover/active */
+    color: #fff; /* White text on hover/active */
+    text-decoration: none; /* No underline, use background */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Headings and Paragraphs */
+h1 {
+    color: #246cac;
+    margin-bottom: 0.3em;
+    text-align: center;
+    font-size: 2.5rem; /* Larger heading */
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: #357ab7;
+    margin-bottom: 1em;
+    margin-top: 1.8em; /* More space above */
+    text-align: center;
+    font-size: 1.8rem; /* Larger subheading */
+    font-weight: 600;
+}
+
+.desc {
+    font-size: 1.1em;
+    color: #22547a;
+    margin-bottom: 2em; /* More space below */
+    line-height: 1.7;
+    text-align: center;
+    max-width: 800px; /* Constrain width for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Home Page Specific Styles */
+.home-img {
+    margin: 2em auto; /* More vertical margin */
+    display: block;
+    max-width: 400px; /* Larger image */
+    width: 100%; /* Responsive width */
+    height: auto;
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 8px 20px rgba(71, 140, 198, 0.3); /* Stronger shadow */
+    object-fit: cover;
+}
+
+.order-btn-home {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #246cac, #3689c9); /* Gradient button */
+    color: #eaf6fb;
+    font-weight: bold;
+    font-size: 1.2rem; /* Larger font */
+    padding: 0.9em 2.8em; /* More padding */
+    border-radius: 12px; /* More rounded */
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 6px 15px rgba(0, 106, 173, 0.3); /* Stronger shadow */
+    border: none; /* Remove default border */
+}
+
+.order-btn-home:hover {
+    background: linear-gradient(145deg, #3689c9, #246cac); /* Reverse gradient on hover */
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 8px 20px rgba(0, 106, 173, 0.4);
+}
+
+.order-btn-home:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 106, 173, 0.2);
+}
+
+/* Menu List and Items (Order Page) */
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Increased gap */
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.menu-item {
+    width: 240px; /* Wider items */
+    background: #d9effa;
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 2px 10px rgba(71, 140, 198, 0.2);
+    padding: 18px; /* More padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.25s ease; /* Smooth transitions */
+    border: 2px solid #cbe6fa;
+    position: relative; /* For potential future overlays */
+    overflow: hidden; /* Ensure content respects border-radius */
+}
+
+.menu-item:hover {
+    box-shadow: 0 5px 25px rgba(53, 122, 183, 0.4);
+    transform: translateY(-5px) scale(1.02); /* More pronounced lift and scale */
+    border-color: #4a90e2; /* Highlight border on hover */
+}
+
+.menu-item img {
+    width: 100%; /* Make image fill item width */
+    max-width: 150px; /* Max width for image */
+    height: 100px; /* Fixed height */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 12px rgba(74, 144, 226, 0.3);
+    background: #fff;
+    border: 1px solid #cbe6fa;
+}
+
+.food-title {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #246cac;
+    font-size: 1.25rem; /* Larger font */
+    text-align: center;
+    line-height: 1.3;
+}
+
